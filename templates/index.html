@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OCV‑without‑hysteresis</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:40px;}
+    h2,h3{margin-top:0;}
+    img{max-width:100%;}
+    .container{max-width:880px;margin:auto;}
+    .note{font-size:13px;color:#666;}
+    .btn{padding:6px 14px;border:1px solid #007BFF;background:#007BFF;color:#fff;border-radius:4px;cursor:pointer;}
+    .btn:hover{background:#006AE6;}
+    a.download{font-weight:bold;text-decoration:none;}
+  </style>
+</head>
+<body>
+<div class="container">
+
+{% if not result %}
+  <h2>Upload CSV to extract OCV (without hysteresis)</h2>
+  <form action="{{ url_for('process') }}" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" accept=".csv" required>
+      &nbsp;<button class="btn" type="submit">Upload &amp; Process</button>
+  </form>
+  <p class="note">Expect files similar to *_C20DisCh.csv (skiprows={{skip}}).</p>
+{% else %}
+  <h3>Open Circuit Voltage&nbsp;(OCV) vs SOC&nbsp;without&nbsp;hysteresis</h3>
+  <img src="data:image/png;base64,{{plot_b64}}" alt="OCV plot">
+  <br><br>
+  <a class="download btn" href="{{csv_data}}" download="{{csv_name}}">⬇&nbsp;Download&nbsp;CSV</a>
+  &nbsp;&nbsp;
+  <a href="{{ url_for('index') }}">Process another file</a>
+{% endif %}
+
+</div>
+</body>
+</html>
