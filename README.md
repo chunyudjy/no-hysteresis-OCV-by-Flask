@@ -7,6 +7,7 @@
 * 🌐 A minimal REST API (`/api/ocv`) for programmatic access
 
 > Ideal for lithium‑ion battery researchers who need a quick, browser‑based tool to inspect and export hysteresis‑free OCV data.
+<img width="739" height="575" alt="Open Circuit Voltage (0CV) vs SOC without hysteresis" src="https://github.com/user-attachments/assets/a4d0d70a-1902-4dab-873b-47658e9dfb31" />
 
 ---
 
